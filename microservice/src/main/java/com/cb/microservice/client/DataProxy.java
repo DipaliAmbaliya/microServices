@@ -1,5 +1,6 @@
 package com.cb.microservice.client;
 
+import com.cb.microservice.client.config.CustomFeignConfiguration;
 import com.cb.microservice.model.People;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
@@ -10,7 +11,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@FeignClient(name = "people-api", url = "${data.url}")
+@FeignClient(name = "people-api", url = "${data.url}", configuration = CustomFeignConfiguration.class)
 public interface DataProxy {
   Logger log = LoggerFactory.getLogger(DataProxy.class);
 

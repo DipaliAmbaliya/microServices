@@ -11,7 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(value = "${app.feign.config.name}", url = "${app.feign.config.url}", configuration = CustomFeignConfiguration.class)
+//@FeignClient(value = "${app.feign.config.name}", url = "${app.feign.config.url}", configuration = CustomFeignConfiguration.class)
+@FeignClient(name = "product-services", configuration = CustomFeignConfiguration.class) // used eureka discovery to connect product service directly
 public interface InstantWebToolsApiClient {
 
     Logger log = LoggerFactory.getLogger(InstantWebToolsApiClient.class);
